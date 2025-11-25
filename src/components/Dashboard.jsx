@@ -32,13 +32,16 @@ const Dashboard = () => {
         { status },
         { withCredentials: true }
       );
-      setAppointments((prevAppointments) =>
-        prevAppointments.map((appointment) =>
-          appointment._id === appointmentId
-            ? { ...appointment, status }
-            : appointment
-        )
-      );
+      setAppointments((prevAppointments) => {
+        if (status === "Rejected") {
+          // remove the rejected appointment from the UI
+          return prevAppointments.filter((a) => a._id !== appointmentId);
+        }
+        // otherwise update the appointment's status in-place
+        return prevAppointments.map((appointment) =>
+          appointment._id === appointmentId ? { ...appointment, status } : appointment
+        );
+      });
       toast.success(data.message);
     } catch (error) {
       toast.error(error.response.data.message);
