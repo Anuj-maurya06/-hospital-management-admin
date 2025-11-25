@@ -243,6 +243,55 @@ body {
   color: #111;
   font-size: 20px;
 }
+
+/* Responsive table wrapper */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile: convert table to stacked rows for better readability */
+@media (max-width: 600px) {
+  .dashboard .banner table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .dashboard .banner table thead {
+    display: none;
+  }
+
+  .dashboard .banner table tbody tr {
+    display: block;
+    margin-bottom: 12px;
+    background: #fff;
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .dashboard .banner table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border: none;
+  }
+
+  .dashboard .banner table tbody td:before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #555;
+    margin-right: 10px;
+    flex: 1;
+  }
+
+  .dashboard .banner table tbody td span,
+  .dashboard .banner table tbody td select {
+    flex: 1;
+    text-align: right;
+  }
+}
 .dashboard .banner table select {
   font-size: 20px;
   border: none;

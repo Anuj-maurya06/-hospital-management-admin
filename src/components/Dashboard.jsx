@@ -82,7 +82,8 @@ const Dashboard = () => {
         </div>
         <div className="banner">
           <h5>Appointments</h5>
-          <table>
+          <div className="table-responsive">
+            <table>
             <thead>
               <tr>
                 <th>Patient</th>
@@ -97,11 +98,11 @@ const Dashboard = () => {
               {appointments && appointments.length > 0
                 ? appointments.map((appointment) => (
                     <tr key={appointment._id}>
-                      <td>{`${appointment.firstName} ${appointment.lastName}`}</td>
-                      <td>{appointment.appointment_date.substring(0, 16)}</td>
-                      <td>{`${appointment.doctor.firstName} ${appointment.doctor.lastName}`}</td>
-                      <td>{appointment.department}</td>
-                      <td>
+                      <td data-label="Patient">{`${appointment.firstName} ${appointment.lastName}`}</td>
+                      <td data-label="Date">{appointment.appointment_date.substring(0, 16)}</td>
+                      <td data-label="Doctor">{`${appointment.doctor.firstName} ${appointment.doctor.lastName}`}</td>
+                      <td data-label="Department">{appointment.department}</td>
+                      <td data-label="Status">
                         <select
                           className={
                             appointment.status === "Pending"
@@ -126,12 +127,13 @@ const Dashboard = () => {
                           </option>
                         </select>
                       </td>
-                      <td>{appointment.hasVisited === true ? <GoCheckCircleFill className="green"/> : <AiFillCloseCircle className="red"/>}</td>
+                      <td data-label="Visited">{appointment.hasVisited === true ? <GoCheckCircleFill className="green"/> : <AiFillCloseCircle className="red"/>}</td>
                     </tr>
                   ))
                 : "No Appointments Found!"}
             </tbody>
-          </table>
+            </table>
+          </div>
 
           {}
         </div>
