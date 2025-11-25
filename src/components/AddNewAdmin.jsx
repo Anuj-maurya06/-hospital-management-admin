@@ -23,7 +23,7 @@ const AddNewAdmin = () => {
     try {
       await axios
         .post(
-          "http://localhost:4000/api/v1/user/admin/addnew",
+          " https://anuj-maurya06-hospital-management-b.vercel.app/api/v1/user/admin/addnew",
           { firstName, lastName, email, phone, adhar, dob, gender, password },
           {
             withCredentials: true,
